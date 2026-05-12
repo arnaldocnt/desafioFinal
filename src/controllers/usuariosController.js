@@ -1,4 +1,5 @@
 const { createDatabase } = require('../config/database');
+const { hashPassword } = require('../models/users');
 
 exports.listarUsuario = async (req, res) => {
     try {
@@ -27,8 +28,9 @@ exports.cadastrarUsuario = async (req, res) => {
     try {
         const db = await createDatabase();
         const { nome, email, senha, telefone } = req.body;
+        const senhaComHash = await hashPassword(senha);
         await db.run(`
-            INSERT INTO usuarios ( nome, email, senha, telefone ) VALUES (?, ?, ?, ?)`, [nome, email, senha, telefone])
+            INSERT INTO usuarios ( nome, email, senha, telefone ) VALUES (?, ?, ?, ?)`, [nome, email, senhaComHash, telefone])
         res.status(201).send("Sucesso!");
     } catch (e) {
         console.error(e);

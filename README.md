@@ -1,6 +1,6 @@
-Projeto Elo Solidario
+# Projeto Elo Solidario
 
-Elo Solidário 🤝
+# Elo Solidário 🤝
 O Elo Solidário é uma plataforma desenvolvida para centralizar e agilizar o suporte em situações de emergências e desastres ambientais. O projeto atua em três frentes críticas: localização de pessoas desaparecidas, gestão de abrigos de emergência e mobilização de voluntários e doações.
 
 🚀 Sobre o Projeto
@@ -17,8 +17,6 @@ Logística de Doações: Listagem em tempo real das necessidades mais urgentes d
 
 🛠️ Tecnologias Utilizadas
 O projeto utiliza uma stack moderna focada em performance e escalabilidade:
-
-Frontend: React com SASS/SCSS para uma interface responsiva e intuitiva.
 
 Backend: Node.js com Express para uma API ágil e segura.
 
@@ -43,7 +41,7 @@ Bash
 cd frontend
 npm install
 npm start
-🗄️ Estrutura do Banco de Dados
+## 🗄️ Estrutura do Banco de Dados
 O sistema conta com um esquema de banco de dados robusto para garantir a integridade das informações:
 
 abrigos: Informações sobre localização e capacidade.

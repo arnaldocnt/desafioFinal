@@ -1,2 +1,1 @@
-const express = ('express');
-const router = express.Router();
+const db = require('../config/database')
