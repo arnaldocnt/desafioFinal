@@ -29,6 +29,7 @@ exports.cadastrarUsuario = async (req, res) => {
         const db = await createDatabase();
         const { nome, email, senha, telefone } = req.body;
         const senhaComHash = await hashPassword(senha);
+
         await db.run(`
             INSERT INTO usuarios ( nome, email, senha, telefone ) VALUES (?, ?, ?, ?)`, [nome, email, senhaComHash, telefone])
         res.status(201).send("Sucesso!");

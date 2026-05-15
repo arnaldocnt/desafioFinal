@@ -1,4 +1,5 @@
 const { createDatabase } = require('../config/database');
+const { validarCPF } = require('../models/validador');
 
 exports.listarDesaparecido = async (req, res) => {
     try {
@@ -27,12 +28,12 @@ exports.cadastrarDesaparecido = async (req, res) => {
     try {
         const db = await createDatabase();
         const { nome, CPF, RG, emissor, local_nasc, nacionalidade, idade, data_nasc, sexo, estado_civil, motivos, situacao } = req.body;
+        const cpfValido = await validarCPF(CPF);
         await db.run(
             `INSERT INTO desaparecidos ( nome, CPF, RG, emissor, local_nasc, nacionalidade, idade, data_nasc, sexo, estado_civil, motivos, situacao ) 
         VALUES
         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)` ,
-            [nome, CPF, RG, emissor, local_nasc, nacionalidade, idade, data_nasc, sexo, estado_civil,
-                motivos, situacao])
+            [nome, CPF, RG, emissor, local_nasc, nacionalidade, idade, data_nasc, sexo, estado_civil, motivos, situacao])
 
         res.status(201).send("Sucesso!");
     } catch (e) {
